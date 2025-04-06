@@ -1,51 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
+    console.log("DOM fully loaded, starting fetch...");
     fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("navbar").innerHTML = data;
-        });
-
-    const menuButton = document.querySelector(".mobile-menu-btn");
-    const mobileMenu = document.querySelector(".mobile-menu");
-
-    if (menuButton && mobileMenu) {
-        menuButton.addEventListener("click", () => {
-            const isOpen = mobileMenu.classList.toggle("open");
-            const icon = menuButton.querySelector(".lucide");
-
-            if (icon) {
-                icon.setAttribute("data-lucide", isOpen ? "x" : "menu");
-                lucide.createIcons(); // Refresh icons
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        });
+            return response.text();
+        })
+        .then(data => {
+            console.log("Fetch successful, inserting navbar...");
+            document.getElementById("navbar").innerHTML = data;
 
-        document.querySelectorAll(".mobile-link").forEach(link => {
-            link.addEventListener("click", () => {
-                mobileMenu.classList.remove("open");
-                const icon = menuButton.querySelector(".lucide");
-                
-                if (icon) {
-                    icon.setAttribute("data-lucide", "menu");
-                    lucide.createIcons(); // Refresh icons
-                }
-            });
-        });
-    }
+            const menuButton = document.querySelector(".mobile-menu-btn");
+            const mobileMenu = document.querySelector(".mobile-menu");
+            const menuIcon = menuButton?.querySelector(".menu-icon");
 
-    const loadIcons = () => {
-        document.querySelectorAll("[data-lucide]").forEach(icon => {
-            const iconName = icon.getAttribute("data-lucide");
-            fetch(`https://cdnjs.cloudflare.com/ajax/libs/lucide/1.3.0/icons/${iconName}.svg`)
-                .then(response => response.text())
-                .then(svg => {
-                    icon.innerHTML = new DOMParser()
-                        .parseFromString(svg, "image/svg+xml")
-                        .documentElement.innerHTML;
-                })
-                .catch(error => console.error(`Error loading icon ${iconName}:`, error));
-        });
-    };
+            if (menuButton && mobileMenu && menuIcon) {
+                console.log("Elements found, adding event listeners...");
+                menuButton.addEventListener("click", () => {
+                    console.log("Menu button clicked...");
+                    const isOpen = mobileMenu.classList.toggle("open");
+                    
+                    menuIcon.innerHTML = isOpen 
+                        ? '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'
+                        : '<line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>';
+                });
 
-    loadIcons();
+                document.querySelectorAll(".mobile-link").forEach(link => {
+                    link.addEventListener("click", () => {
+                        mobileMenu.classList.remove("open");
+                        menuIcon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>';
+                    });
+                });
+            } else {
+                console.error("One or more elements not found:", { menuButton, mobileMenu, menuIcon });
+            }
+        })
+        .catch(error => console.error("Error loading navbar:", error));
 });
