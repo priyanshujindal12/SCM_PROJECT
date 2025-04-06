@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.navbar {
+    height: 80px;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: #4c1d95;
+    color: white;
+    position: fixed;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-brand svg {
+    color: #d8b4fe;
+    height: 2rem;
+    width: 2rem;
+}
+
+.brand-text {
+    margin-left: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-link {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #3b0764;
+}
+
+.dashboard-btn {
+    background-color: #9333ea;
+    margin-left: 1rem;
+}
+
+.dashboard-btn:hover {
+    background-color: #7e22ce;
+}
+
+.mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    color: #d8b4fe;
+    background: none;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    background-color: #3b0764;
+}
+
+.mobile-menu {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+
+.mobile-menu.open {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.mobile-links {
+    padding: 0.5rem 0;
+}
+
+.mobile-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+    .mobile-menu-btn {
+        display: none;
+    }
+    .mobile-menu {
+        display: none;
+    }
+}
