@@ -152,21 +152,10 @@ p {
     max-width: 100%;
 }
 
-.icon-container {
-    background-color: #e9d8fd;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#safety-animation, #empathy-animation, #community-animation, #excellence-animation {
+    width: 90px;
+    height: 90px;
     margin: 0 auto 15px;
-}
-
-.icon-container img {
-    width: 28px;
-    height: 28px;
-    max-width: 100%;
 }
 
 .value-card h3 {
@@ -276,6 +265,48 @@ p {
     color: #4a5568;
 }
 
+/* Animation Styles */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.bounce {
+    opacity: 0;
+}
+
+.bounce-animation {
+    animation: bounce 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    70% {
+        transform: translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Additional Media Queries */
 @media (max-width: 768px) {
     .story-grid {
@@ -342,9 +373,9 @@ p {
         height: 40px;
     }
 
-    .icon-container img {
-        width: 20px;
-        height: 20px;
+    #safety-animation, #empathy-animation, #community-animation, #excellence-animation {
+        width: 40px;
+        height: 40px;
     }
 
     .value-card h3, .team-card h3 {
@@ -379,6 +410,6 @@ p {
 
     .team-card img {
         width: 80px;
-        height:80px;
+        height: 80px;
     }
 }
