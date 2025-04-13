@@ -4,14 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guardian Angel - Women's Safety</title>
-    <link href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/lucide.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.3.0/font/lucide.css">
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="home.css">
-
-    
-    
     <style>
         html {
             scroll-behavior: smooth;
@@ -21,10 +16,10 @@
 <body>
     <div id="navbar"></div>
     
-    <section class="hero animate-fade-in">
+    <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Guardian Angel</h1>
+                <h1 class="hero-title" id="main-title"><span id="typed-text"></span><span id="cursor">|</span></h1>
                 <h2 class="hero-subtitle">Women's Safety SOS System</h2>
                 <p class="hero-text">An emergency response system designed to provide immediate assistance and peace of mind for women in potentially dangerous situations.</p>
                 <div class="hero-buttons">
@@ -33,7 +28,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Women's safety">
+                <div id="hero-animation"></div>
             </div>
         </div>
     </section>
@@ -44,36 +39,28 @@
             <p>Our comprehensive safety solution includes:</p>
         </div>
         <div class="features-grid">
-            <div class="feature-card animate-fade-in">
-                <div class="feature-icon">
-                    <i data-lucide="bell"></i>
-                </div>
+            <div class="feature-card">
+                <div id="sos-animation"></div>
                 <h3>Instant SOS Button</h3>
                 <p>One-click emergency button for discreet alerts to your emergency contacts.</p>
             </div>
             
-            <div class="feature-card animate-fade-in">
-                <div class="feature-icon">
-                    <i data-lucide="map-pin"></i>
-                </div>
+            <div class="feature-card">
+                <div id="location-animation"></div>
                 <h3>Geolocation Tracking</h3>
                 <p>Sends your exact location to contacts and emergency services in real-time.</p>
             </div>
             
-            <div class="feature-card animate-fade-in">
-                <div class="feature-icon">
-                    <i data-lucide="volume-2"></i>
-                </div>
+            <div class="feature-card">
+                <div id="chatbot-animation"></div>
                 <h3>Automated ChatBot</h3>
-                <p>A chat bot to provide consolation and counselling about the traumans and incident that haunts you.</p>
+                <p>A chat bot to provide consolation and counseling about traumas and incidents.</p>
             </div>
             
-            <div class="feature-card animate-fade-in">
-                <div class="feature-icon">
-                    <i data-lucide="lock"></i>
-                </div>
+            <div class="feature-card">
+                <div id="silent-mode-animation"></div>
                 <h3>Silent Mode Activation</h3>
-                <p>Send alerts without making a sound, making it safer in cases of close threats.</p>
+                <p>Send alerts silently, ensuring safety in close-threat situations.</p>
             </div>
         </div>
     </section>
@@ -159,14 +146,93 @@
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script>
-        lucide.createIcons();
+        // Load Lottie animations for features
+        lottie.loadAnimation({
+            container: document.getElementById('sos-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'animations/sos2.json'
+        });
 
+        lottie.loadAnimation({
+            container: document.getElementById('location-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'animations/location.json'
+        });
+
+        lottie.loadAnimation({
+            container: document.getElementById('chatbot-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'animations/chatbot.json'
+        });
+
+        lottie.loadAnimation({
+            container: document.getElementById('silent-mode-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'animations/silent.json'
+        });
+
+        // Load Lottie animation for hero image
+        lottie.loadAnimation({
+            container: document.getElementById('hero-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'animations/safety2.json' // Replace with your downloaded file
+        });
+
+        // Simplified typing effect
+        const typedText = document.getElementById('typed-text');
+        const cursor = document.getElementById('cursor');
+        const words = ["Guardian Angel", "Women's Safety SOS", "Your Safety first"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typedText.textContent = currentWord.substring(0, charIndex--);
+                if (charIndex < 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(type, 800); // Pause before next word
+                } else {
+                    setTimeout(type, 30); // Smoother deleting
+                }
+            } else {
+                typedText.textContent = currentWord.substring(0, charIndex++);
+                if (charIndex > currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(type, 2000); // Longer pause after typing
+                } else {
+                    setTimeout(type, 120); // Smoother typing speed
+                }
+            }
+        }
+
+        // Blinking cursor
+        setInterval(() => {
+            cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+        }, 600);
+
+        // Start the typing effect
+        type();
+
+        // IntersectionObserver for fade-in animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in');
+                    entry.target.classList.add('fade-in');
                 }
             });
         });
@@ -177,8 +243,6 @@
     </script>
     <script src="navbar.js"></script>
     <script src="footer.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.3.0/lucide.min.js"></script>
-    
 </body>
 <footer>
     <div id="footer"></div>
