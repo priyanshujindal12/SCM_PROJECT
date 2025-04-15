@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.3.0/font/lucide.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="community.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <div class="main-container">
+        <div class="left-section">
+            <h2>Community Thoughts</h2>
+            <div class="post-box">
+                <textarea id="postInput" placeholder="Write something..."></textarea>
+                <button id="postButton">Post</button>
+            </div>
+            <div id="postsContainer"></div>
+        </div>
+        
+        <div class="right-section">
+            <h3>Support Options</h3>
+            <div class="counseling-box">
+                <input type="text" id="locationInput" placeholder="Enter your location">
+                <button id="bookButton">Book a Counseling</button>
+                <button id="chatButton" onclick="toggleChatPopup()">Talk to Guardian Angel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header">
+            <h2>Guardian Angel</h2>
+            <button class="close-btn" onclick="toggleChatPopup()">×</button>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="message angel">Hello, I’m Guardian Angel, here to offer you a gentle, comforting presence. What’s on your heart today?</div>
+        </div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Share with me...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="navbar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.3.0/lucide.min.js"></script>
+    <script src="footer.js"></script>
+    <script src="community.js"></script>
+</body>
+<footer id="footer"></footer>
+</html>
