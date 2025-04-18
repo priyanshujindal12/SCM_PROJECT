@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         comments.forEach(comment => {
-            postDiv.querySelector(#comments-${postId}).appendChild(createCommentElement(comment));
+            postDiv.querySelector(`#comments-${postId}`).appendChild(createCommentElement(comment));
         });
 
         return postDiv;
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.saveComment = function (postId) {
-        const commentInput = document.getElementById(commentInput-${postId});
+        const commentInput = document.getElementById(`commentInput-${postId}`);
         const commentText = commentInput.value.trim();
         if (!commentText) return;
 
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (postIndex !== -1) {
             posts[postIndex].comments.push(commentText);
             localStorage.setItem("communityPosts", JSON.stringify(posts));
-            document.getElementById(comments-${postId}).appendChild(createCommentElement(commentText));
+            document.getElementById(`comments-${postId}`).appendChild(createCommentElement(commentText));
         }
         commentInput.value = "";
     };
@@ -106,10 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         
-        const fallbackResponse = I’m here with you, and I hear you. It sounds like ${userInput.toLowerCase().includes("feel") ? "you’re carrying some heavy feelings" : "something’s on your mind"}—would you like to share more? I’ll listen with all my heart.;
+        const fallbackResponse = `I’m here with you, and I hear you. It sounds like ${userInput.toLowerCase().includes("feel") ? "you’re carrying some heavy feelings" : "something’s on your mind"}—would you like to share more? I’ll listen with all my heart.`;
 
         try {
-            const response = await fetch(https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}, {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!response.ok) {
                 const errorText = await response.text();
-                console.error(API Error: ${response.status} - ${errorText});
+                console.error(`API Error: ${response.status} - ${errorText}`);
                 throw new Error("API request failed");
             }
 
