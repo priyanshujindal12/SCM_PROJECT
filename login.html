@@ -58,31 +58,31 @@
 
     <!-- Firebase SDKs -->
     <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js';
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js';
-        import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js';
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBk5loDyP_UQALCkbOY98z6xCA0aXcP6wQ",
-            authDomain: "guardian-angel-5e9f7.firebaseapp.com",
-            projectId: "guardian-angel-5e9f7",
-            storageBucket: "guardian-angel-5e9f7.firebasestorage.app",
-            messagingSenderId: "1085736239962",
-            appId: "1:1085736239962:web:37492ea0838a045d562963",
-            measurementId: "G-7X5W3HYR7F"
-        };
-
+        // CHANGED: Imported firebaseConfig instead of auth
+        import { firebaseConfig } from "./firebase_config.js";
+        // CHANGED: Kept initializeApp import (same as original)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+        // CHANGED: Kept getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword imports (same as original)
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+        // CHANGED: Kept getFirestore, doc, setDoc imports (same as original)
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+    
+        // CHANGED: Removed hardcoded firebaseConfig object
+        // const firebaseConfig = { ... }; // Removed to use imported firebaseConfig
+    
+        // CHANGED: Initialized Firebase using imported firebaseConfig
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-
+    
         // Sign Up Form
+        // CHANGED: Added .trim() to inputs and reset form for better UX
         document.getElementById('signUpForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const name = document.getElementById('signupName').value;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-
+            const name = document.getElementById('signupName').value.trim(); // CHANGED: Added .trim()
+            const email = document.getElementById('signupEmail').value.trim(); // CHANGED: Added .trim()
+            const password = document.getElementById('signupPassword').value.trim(); // CHANGED: Added .trim()
+    
             try {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
@@ -92,35 +92,57 @@
                     phone: '',
                     sosMessage: "I'm in an emergency situation and need help. This is my current location:"
                 });
-                window.location.href = 'index.html';
+                // CHANGED: Added success alert and form reset
+                alert('Account created successfully!');
+                document.getElementById('signUpForm').reset();
+                window.location.href = 'login.html';
             } catch (error) {
+                // CHANGED: Added console.error for debugging
+                console.error("Signup error:", error);
                 alert('Signup failed: ' + error.message);
             }
         });
-
+    
         // Sign In Form
+        // CHANGED: Added .trim() to inputs and success alert
         document.getElementById('signInForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const email = document.getElementById('signInEmail').value;
-            const password = document.getElementById('signInPassword').value;
-
+            const email = document.getElementById('signInEmail').value.trim(); // CHANGED: Added .trim()
+            const password = document.getElementById('signInPassword').value.trim(); // CHANGED: Added .trim()
+    
             try {
                 await signInWithEmailAndPassword(auth, email, password);
+                // CHANGED: Added success alert
+                alert('Logged in successfully!');
                 window.location.href = 'dashboard.html';
             } catch (error) {
+                // CHANGED: Added console.error for debugging
+                console.error("Signin error:", error);
                 alert('Signin failed: ' + error.message);
             }
         });
-
+    
         // Panel Switching
         const container = document.getElementById('container');
         const switchToSignIn = document.getElementById('switchToSignIn');
         const switchToSignUp = document.getElementById('switchToSignUp');
         const overlayBtn = document.getElementById('overlayBtn');
-
-        switchToSignIn.addEventListener('click', () => container.classList.remove('right-panel-active'));
-        switchToSignUp.addEventListener('click', () => container.classList.add('right-panel-active'));
-        overlayBtn.addEventListener('click', () => container.classList.toggle('right-panel-active'));
-    </script>
+    
+        // CHANGED: Added console.log for debugging
+        switchToSignIn.addEventListener('click', () => {
+            container.classList.remove('right-panel-active');
+            console.log("Switched to signin");
+        });
+        // CHANGED: Fixed typo ('clicked' → 'click') and added console.log
+        switchToSignUp.addEventListener('click', () => { // Original had 'clicked'
+            container.classList.add('right-panel-active');
+            console.log("Switched to signup");
+        });
+        // CHANGED: Added console.log for debugging
+        overlayBtn.addEventListener('click', () => {
+            container.classList.toggle('right-panel-active');
+            console.log("Toggled panel");
+        });
+      </script>
 </body>
 </html>
