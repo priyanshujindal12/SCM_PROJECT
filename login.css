@@ -248,7 +248,7 @@ p {
         min-height: 600px;
         display: flex;
         flex-direction: column;
-        padding-bottom: 60px; /* Add padding to accommodate toggle button */
+        padding-bottom: 60px; 
     }
 
     .form-container {
@@ -259,19 +259,19 @@ p {
     }
 
     .sign-up-container {
-        display: none; /* Hidden by default */
+        display: none; 
         opacity: 1 !important;
         transform: none !important;
     }
 
     .sign-in-container {
-        display: block; /* Shown by default */
+        display: block; 
         opacity: 1 !important;
         transform: none !important;
     }
 
     .right-panel-active .sign-up-container {
-        display: block; /* Show sign-up when active */
+        display: block; 
     }
 
     .right-panel-active .sign-in-container {
