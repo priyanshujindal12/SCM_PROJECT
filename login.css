@@ -322,8 +322,8 @@ p {
     }
 
     #overlayBtn {
-        max-width: 100px; /* Further constrain width on smaller screens */
-        font-size: 10px; /* Smaller font size */
-        padding: 0 8px; /* Reduce padding */
+        max-width: 100px; 
+        font-size: 10px; 
+        padding: 0 8px; 
     }
 }
