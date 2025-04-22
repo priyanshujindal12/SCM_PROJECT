@@ -148,7 +148,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script>
-        // Load Lottie animations for features
+        
         lottie.loadAnimation({
             container: document.getElementById('sos-animation'),
             renderer: 'svg',
@@ -181,16 +181,15 @@
             path: 'animations/silent.json'
         });
 
-        // Load Lottie animation for hero image
         lottie.loadAnimation({
             container: document.getElementById('hero-animation'),
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'animations/safety2.json' // Replace with your downloaded file
+            path: 'animations/safety2.json' 
         });
 
-        // Simplified typing effect
+        
         const typedText = document.getElementById('typed-text');
         const cursor = document.getElementById('cursor');
         const words = ["Guardian Angel", "Women's Safety SOS", "Your Safety first"];
@@ -205,9 +204,9 @@
                 if (charIndex < 0) {
                     isDeleting = false;
                     wordIndex = (wordIndex + 1) % words.length;
-                    setTimeout(type, 800); // Pause before next word
+                    setTimeout(type, 800); 
                 } else {
-                    setTimeout(type, 30); // Smoother deleting
+                    setTimeout(type, 30); 
                 }
             } else {
                 typedText.textContent = currentWord.substring(0, charIndex++);
