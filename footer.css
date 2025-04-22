@@ -8,12 +8,12 @@ body {
     background-color: #4c1d95;
     color: white;
     margin-top: 100px;
-    width: 100%; /* Ensure full width */
-    overflow: hidden; /* Prevent overflow */
+    width: 100%; 
+    overflow: hidden; 
 }
 
 .max-w-7xl {
-    max-width: 100%; /* Override to fit viewport */
+    max-width: 100%; 
     width: 100%;
     margin-left: auto;
     margin-right: auto;
