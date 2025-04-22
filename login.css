@@ -275,19 +275,19 @@ p {
     }
 
     .right-panel-active .sign-in-container {
-        display: none; /* Hide sign-in when sign-up is active */
+        display: none; 
     }
 
     .overlay-container {
-        display: none; /* Hide overlay on mobile */
+        display: none; 
     }
 
     #overlayBtn {
-        display: block; /* Show toggle button on mobile */
-        position: relative; /* Ensure it stays within container */
-        margin: 10px auto 20px; /* Adjusted margin for better spacing */
-        width: 100%; /* Full width of parent */
-        max-width: 120px; /* Constrain max width to prevent overflow */
+        display: block; 
+        position: relative; 
+        margin: 10px auto 20px; 
+        width: 100%; 
+        max-width: 120px; 
     }
 
     h1 {
