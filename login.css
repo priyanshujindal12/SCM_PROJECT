@@ -138,11 +138,11 @@ button:hover {
 }
 
 #overlayBtn {
-    display: none; /* Hidden by default, shown only on mobile */
+    display: none; 
     cursor: pointer;
     margin: 20px auto;
-    width: 100%; /* Full width of parent */
-    max-width: 120px; /* Constrain max width */
+    width: 100%; 
+    max-width: 120px; 
     height: 35px;
     border: 1px solid var(--grad-clr1);
     background: transparent;
