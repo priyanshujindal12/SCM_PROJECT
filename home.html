@@ -213,22 +213,22 @@
                 typedText.textContent = currentWord.substring(0, charIndex++);
                 if (charIndex > currentWord.length) {
                     isDeleting = true;
-                    setTimeout(type, 2000); // Longer pause after typing
+                    setTimeout(type, 2000); 
                 } else {
-                    setTimeout(type, 120); // Smoother typing speed
+                    setTimeout(type, 120); 
                 }
             }
         }
 
-        // Blinking cursor
+    
         setInterval(() => {
             cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
         }, 600);
 
-        // Start the typing effect
+    
         type();
 
-        // IntersectionObserver for fade-in animations
+    
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
