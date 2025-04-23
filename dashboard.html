@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guardian Angel Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.3.0/font/lucide.css">
+  <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="dashboard">
+    <div class="sidebar">
+      <div class="logo">
+        <img src="https://icons.veryicon.com/png/o/business/business-style-icon/shield-24.png" alt="Shield Icon" class="icon">
+        <span class="logo-text">Dashboard</span>
+      </div>
+      <nav class="nav">
+        <button class="nav-item active" data-tab="home">
+          <img src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-and-shapes-3/177800/102-512.png" alt="Bell Icon" class="icon">
+          <span>Home</span>
+        </button>
+        <button class="nav-item" data-tab="location">
+          <img src="https://www.iconpacks.net/icons/2/free-location-icon-2955-thumb.png" alt="Map Pin Icon" class="icon">
+          <span>Location</span>
+        </button>
+        <button class="nav-item" data-tab="contacts">
+          <img src="https://cdn-icons-png.flaticon.com/512/5995/5995295.png" alt="Users Icon" class="icon">
+          <span>Contacts</span>
+        </button>
+        <button class="nav-item" data-tab="settings">
+          <img src="https://cdn-icons-png.freepik.com/512/7133/7133331.png" alt="Settings Icon" class="icon">
+          <span>Settings</span>
+        </button>
+      </nav>
+      <button class="sos-button" id="sosButton">
+        <span>SOS ALERT</span>
+      </button>
+      <button class="logout-button" id="logoutButton">
+        <span>LOGOUT</span>
+      </button>
+    </div>
+
+    <div class="main-content">
+      <div class="tab-content active" id="home">
+        <h2>Dashboard Home</h2>
+        <div class="sos-alert" id="sosAlert">
+          <span>SOS Alert is active! Your emergency contacts have been notified.</span>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3>Emergency Contacts</h3>
+            <ul id="contactsList"></ul>
+          </div>
+          <div class="card">
+            <h3>Current Location</h3>
+            <p>Latitude: <span id="latitude">30.516</span></p>
+            <p>Longitude: <span id="longitude">76.659</span></p>
+            <button class="thisisgood"><a href="https://www.google.com/maps?q=30.5145926,76.6528112" target="_blank">View on map →</a></button>
+          </div>
+          <div class="card">
+            <h3>Fake Emergency Call</h3>
+            <button class="fake-call-button"><a href="/fake_call1.html" target="_blank">Make Fake Call</a></button>
+          </div>
+        </div>
+        <div class="quick-tips">
+          <h3>Quick Tips</h3>
+          <ul>
+            <li><span>1</span>Add at least 3 emergency contacts for better safety coverage.</li>
+            <li><span>2</span>Test the SOS feature with your contacts.</li>
+            <li><span>3</span>Keep location services enabled.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tab-content" id="location">
+        <h2>Location Tracking</h2>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.566061998947!2d76.6591233151331!3d30.51600348180039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fc32344a6e2d7%3A0x81b346dee91799ca!2sChitkara%20University!5e0!3m2!1sen!2sin!4v1698765432105!5m2!1sen!2sin"
+            width="100%"
+            height="400"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3>Current Coordinates</h3>
+            <p>Latitude: <span id="latitude2">30.516</span></p>
+            <p>Longitude: <span id="longitude2">76.659</span></p>
+          </div>
+          <div class="card">
+            <h3>Location Sharing</h3>
+            <p>Your location is currently <span id="locationStatus">not being shared</span> with your emergency contacts.</p>
+            <button class="share-location-button" id="shareLocationButton">Share Location Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="contacts">
+        <h2>Emergency Contacts</h2>
+        <div class="add-contact-form">
+          <h3>Add New Contact</h3>
+          <form id="addContactForm">
+            <input type="text" id="contactName" placeholder="Contact Name" required>
+            <input type="email" id="contactEmail" placeholder="demo@example.com" required>
+            <button type="submit">Add Contact</button>
+          </form>
+        </div>
+        <div class="contacts-list">
+          <h3>Your Contacts</h3>
+          <table id="contactsTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-content" id="settings">
+        <h2>Settings</h2>
+        <div class="profile-section">
+          <h3>Your Profile</h3>
+          <p>Name: <span id="profileName">Loading...</span></p>
+          <p>Email: <span id="profileEmail">Loading...</span></p>
+        </div>
+        <div class="notification-settings">
+          <h3>Notification Settings</h3>
+          <div class="setting">
+            <label><input type="checkbox" id="sosSound" checked> SOS Alert Sound</label>
+          </div>
+          <div class="setting">
+            <label><input type="checkbox" id="silentMode"> Silent Mode</label>
+          </div>
+          <div class="setting">
+            <label><input type="checkbox" id="locationTracking" checked> Location Tracking</label>
+          </div>
+        </div>
+        <div class="sos-message-settings">
+          <h3>SOS Message Settings</h3>
+          <textarea id="sosMessage">I'm in an emergency situation and need help. This is my current location:</textarea>
+          <button id="saveMessageButton">Save Message</button>
+        </div>
+        <div class="account-settings">
+          <h3>Account Settings</h3>
+          <form id="accountForm">
+            <input type="text" id="userName" placeholder="Your Name">
+            <input type="email" id="userEmail" placeholder="Email Address">
+            <button type="submit">Save Changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="dashboard.js"></script>
+  
+  <script src="navbar.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.3.0/lucide.min.js"></script>
+</body>
+</html>
