@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.hero {
+    margin-top: 60px;
+    background: #4c1d95;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.contact-cards {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.contact-card svg {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 20px;
+    color: #6d28d9;
+}
+
+
+.form-section {
+    padding: 60px 20px;
+    background: #f8f9fa;
+}
+
+.form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.faq-section {
+    padding-right: 40px;
+}
+
+.faq-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #1f2937;
+}
+
+.faq-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.faq-item {
+    margin-bottom: 25px;
+}
+
+.faq-item h3 {
+    color: #4c1d95;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.contact-form {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #374151;
+    font-weight: 500;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+button {
+    background: #6d28d9;
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+button:hover {
+    background: #5b21b6;
+}
+
+@media (max-width: 768px) {
+    .contact-cards,
+    .form-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .faq-section {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+    
+    .hero {
+        padding: 60px 20px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
