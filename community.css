@@ -10,7 +10,7 @@ body {
     margin-left: 250px;
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 80%;
     max-width: 1200px;
     gap: 20px;
 }
@@ -24,7 +24,7 @@ body {
 }
 
 .left-section {
-    width: 65%;
+    width: 66%;
     overflow-x: hidden;
 }
 
