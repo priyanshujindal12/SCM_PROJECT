@@ -1,4 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Load Lottie Animation
+    const animationContainer = document.getElementById('community-animation');
+    const fallbackImage = document.getElementById('fallback-image');
+    
+    if (animationContainer) {
+        try {
+            lottie.loadAnimation({
+                container: animationContainer,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'k.json',
+                rendererSettings: {
+                    preserveAspectRatio: 'xMidYMid slice'
+                }
+            });
+        } catch (error) {
+            console.error('Lottie animation failed to load:', error);
+            if (fallbackImage) {
+                fallbackImage.style.display = 'block';
+                animationContainer.style.display = 'none';
+            }
+        }
+    }
+
     const postButton = document.getElementById("postButton");
     const postInput = document.getElementById("postInput");
     const postsContainer = document.getElementById("postsContainer");
@@ -76,8 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    
-    const apiKey = "AIzaSyDcYtRhFRat81-Qj5hhBLB_zU_5jsikcvs"; 
+    const apiKey = "AIzaSyDcYtRhFRat81-Qj5hhBLB_zU_5jsikcvs";
 
     window.toggleChatPopup = function () {
         const chatPopup = document.getElementById("chatPopup");
@@ -105,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
             Above all, embody a guardian-like presence—reassuring, patient, and endlessly supportive. End each interaction with warmth, like, 'I’m here for you anytime you need me—you’re never alone with Guardian Angel by your side.'
         `;
 
-        
         const fallbackResponse = `I’m here with you, and I hear you. It sounds like ${userInput.toLowerCase().includes("feel") ? "you’re carrying some heavy feelings" : "something’s on your mind"}—would you like to share more? I’ll listen with all my heart.`;
 
         try {
