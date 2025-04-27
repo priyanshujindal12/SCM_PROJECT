@@ -11,7 +11,7 @@ body {
 
 .container {
     max-width: 100%; /* Ensure container fits viewport */
-    width: 100%;
+    width: 100%;/*Ensure container fits viewport*/
     margin: 0 auto;
     padding: 0 10px; /* Tight padding for small screens */
     box-sizing: border-box;
