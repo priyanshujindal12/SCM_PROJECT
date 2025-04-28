@@ -1,0 +1,415 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    /* Temporary debug: outline elements to spot overflow */
+    /* Uncomment to debug: * { outline: 1px solid red; } */
+    /* Comment out after testing */
+}
+
+.container {
+    max-width: 100%; /* Ensure container fits viewport */
+    width: 100%;/*Ensure container fits viewport*/
+    margin: 0 auto;
+    padding: 0 10px; /* Tight padding for small screens */
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-weight: bold;
+}
+
+p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.hero-section {
+    margin-top: 80px; /* Adjusted to clear a fixed navbar (e.g., 80px height) */
+    background-color: #4c1d95;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.our-story-section {
+    padding: 60px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.story-content {
+    max-width: 100%;
+    width: 100%;
+}
+
+.story-content h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+}
+
+.story-content p {
+    font-size: 1rem;
+    color: #4a5568;
+    margin-bottom: 15px;
+}
+
+.story-image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    display: block;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .story-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .story-image {
+        order: -1;
+    }
+
+    .hero-section {
+        padding: 40px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
+.values-section {
+    background-color: #f7fafc;
+    padding: 60px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.values-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.values-section .subtitle {
+    font-size: 1.1rem;
+    color: #4a5568;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.value-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    max-width: 100%;
+}
+
+#safety-animation, #empathy-animation, #community-animation, #excellence-animation {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 15px;
+}
+
+.value-card h3 {
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.value-card p {
+    font-size: 0.9rem;
+    color: #4a5568;
+}
+
+.team-section {
+    padding: 60px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.team-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.team-section .subtitle {
+    font-size: 1.1rem;
+    color: #4a5568;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.team-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    max-width: 100%;
+}
+
+.team-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    max-width: 100%;
+}
+
+.team-card h3 {
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.team-card .role {
+    font-size: 0.9rem;
+    color: #6b46c1;
+    margin-bottom: 10px;
+}
+
+.team-card .description {
+    font-size: 0.9rem;
+    color: #4a5568;
+}
+
+.mission-vision-section {
+    background-color: #f5f3ff;
+    padding: 60px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.mission-card, .vision-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    max-width: 100%;
+}
+
+.mission-card h3, .vision-card h3 {
+    font-size: 1.7rem;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+}
+
+.mission-card p, .vision-card p {
+    font-size: 1rem;
+    color: #4a5568;
+}
+
+/* Animation Styles */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.bounce {
+    opacity: 0;
+}
+
+.bounce-animation {
+    animation: bounce 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    70% {
+        transform: translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Additional Media Queries */
+@media (max-width: 768px) {
+    .story-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .story-image {
+        order: -1;
+    }
+
+    .hero-section {
+        padding: 40px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .values-grid, .team-grid, .mission-vision-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 30px 0;
+        margin-top: 60px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .story-grid {
+        gap: 10px;
+    }
+
+    .story-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .story-content p {
+        font-size: 0.9rem;
+    }
+
+    .values-section, .team-section, .mission-vision-section {
+        padding: 40px 0;
+    }
+
+    .value-card, .team-card {
+        padding: 10px;
+    }
+
+    .icon-container {
+        width: 40px;
+        height: 40px;
+    }
+
+    #safety-animation, #empathy-animation, #community-animation, #excellence-animation {
+        width: 40px;
+        height: 40px;
+    }
+
+    .value-card h3, .team-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .value-card p, .team-card .role, .team-card .description {
+        font-size: 0.85rem;
+    }
+
+    .mission-card, .vision-card {
+        padding: 15px;
+    }
+
+    .mission-card h3, .vision-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .mission-card p, .vision-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .team-card img {
+        width: 80px;
+        height: 80px;
+    }
+}
